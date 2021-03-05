@@ -358,11 +358,13 @@ initControls();
 spawnAliens(ALIENS.count, ALIENS.size, ALIENS.spacing);
 
 const timeInterval = setInterval(() => {
-    GAME.currentLevel.time += 1;
+    if (!SETTINGS.paused) {
+        GAME.currentLevel.time += 1;
+    }
 }, SETTINGS.timeInterval);
 
 const comboInterval = setInterval(() => {
-    if (GAME.currentLevel.combo > 1) {
+    if (GAME.currentLevel.combo > 1 && !SETTINGS.paused) {
         GAME.currentLevel.combo -= 1;
     }
 }, SETTINGS.comboInterval);
